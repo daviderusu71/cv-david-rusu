@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Rusu - CV</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:Segoe UI; }
+
+body {
+    background:#0f172a;
+    color:#f8fafc;
+    padding:50px;
+    transition:0.3s ease;
+}
+
+.container {
+    max-width:800px;
+    margin:auto;
+}
+
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+h1 { font-size:32px; }
+
+.lang-switch button {
+    background:#1e293b;
+    border:none;
+    color:white;
+    padding:8px 14px;
+    margin-left:5px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.lang-switch button.active {
+    background:#3b82f6;
+}
+
+.section { margin-top:35px; }
+
+.section h2 {
+    border-bottom:1px solid #334155;
+    padding-bottom:5px;
+    margin-bottom:15px;
+}
+
+ul { list-style:none; }
+
+li { margin-bottom:8px; }
+
+a { color:#3b82f6; text-decoration:none; }
+a:hover { color:#60a5fa; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+    <h1>David Rusu</h1>
+    <div class="lang-switch">
+        <button id="itBtn" class="active">IT</button>
+        <button id="enBtn">EN</button>
+    </div>
+</header>
+
+<!-- PROFILE -->
+<div class="section">
+<h2 id="profileTitle">Profilo</h2>
+<p id="profileText">
+Front-End Developer appassionato nello sviluppo di applicazioni web interattive utilizzando HTML, CSS e JavaScript.
+Focus su interfacce moderne e funzionalità reali.
+</p>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+<h2 id="skillsTitle">Competenze</h2>
+<ul id="skillsList">
+<li>HTML5</li>
+<li>CSS3 (Flexbox, Grid)</li>
+<li>JavaScript (ES6)</li>
+<li>LocalStorage</li>
+<li>Chart.js</li>
+<li>Git & GitHub</li>
+</ul>
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+<h2 id="projectsTitle">Progetti</h2>
+<ul>
+<li><a href="https://daviderusu71.github.io/Admin-Dashboard/" target="_blank">Admin Dashboard</a></li>
+<li><a href="https://daviderusu71.github.io/Mini-CRM-Pro/" target="_blank">Mini CRM Pro</a></li>
+</ul>
+</div>
+
+<!-- CONTACT -->
+<div class="section">
+<h2 id="contactTitle">Contatto</h2>
+<p>Email: emailul-tau@gmail.com</p>
+<p>GitHub: <a href="https://github.com/daviderusu71" target="_blank">github.com/daviderusu71</a></p>
+</div>
+
+</div>
+
+<script>
+const itBtn = document.getElementById("itBtn");
+const enBtn = document.getElementById("enBtn");
+
+const profileTitle = document.getElementById("profileTitle");
+const profileText = document.getElementById("profileText");
+const skillsTitle = document.getElementById("skillsTitle");
+const projectsTitle = document.getElementById("projectsTitle");
+const contactTitle = document.getElementById("contactTitle");
+
+itBtn.addEventListener("click", () => {
+    itBtn.classList.add("active");
+    enBtn.classList.remove("active");
+
+    profileTitle.innerText = "Profilo";
+    profileText.innerText = "Front-End Developer appassionato nello sviluppo di applicazioni web interattive utilizzando HTML, CSS e JavaScript. Focus su interfacce moderne e funzionalità reali.";
+    skillsTitle.innerText = "Competenze";
+    projectsTitle.innerText = "Progetti";
+    contactTitle.innerText = "Contatto";
+});
+
+enBtn.addEventListener("click", () => {
+    enBtn.classList.add("active");
+    itBtn.classList.remove("active");
+
+    profileTitle.innerText = "Profile";
+    profileText.innerText = "Front-End Developer passionate about building interactive web applications using HTML, CSS, and JavaScript. Focused on modern UI and real-world functionality.";
+    skillsTitle.innerText = "Skills";
+    projectsTitle.innerText = "Projects";
+    contactTitle.innerText = "Contact";
+});
+</script>
+
+</body>
+</html>
