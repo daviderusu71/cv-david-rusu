@@ -3,325 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David Rusu | Pro CV</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<title>David Rusu | CV</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
 
 body{
-background:#0f172a;
-color:#f8fafc;
+background:#f4f6f9;
 padding:40px;
-transition:0.3s;
 }
 
-body.light{
-background:#f1f5f9;
-color:#111;
-}
-  body.light .container{
-    background:white;
-    color:#111;
-}
-  body.light a {
-    color:#2563eb;
-}
-
-.top-controls{
-display:flex;
-justify-content:space-between;
-margin-bottom:20px;
-}
-
-button{
-background:#3b82f6;
-border:none;
-color:white;
-padding:8px 14px;
-border-radius:6px;
-cursor:pointer;
-margin-left:5px;
-}
-
-button.secondary{background:#334155;}
-button.active{background:#2563eb;}
-
-.container{
+.cv{
 max-width:1000px;
 margin:auto;
-background:#1e293b;
-padding:40px;
-border-radius:16px;
+background:white;
 display:grid;
 grid-template-columns:300px 1fr;
-gap:40px;
+box-shadow:0 5px 30px rgba(0,0,0,0.1);
 }
 
-body.light .container{background:white;}
-
 .sidebar{
-border-right:1px solid rgba(255,255,255,0.1);
-padding-right:20px;
-text-align:center;
+background:#2c3e50;
+color:white;
+padding:40px 25px;
 }
 
 .profile-img{
-width:120px;
-height:120px;
+width:130px;
+height:130px;
 border-radius:50%;
 object-fit:cover;
-margin-bottom:15px;
-border:3px solid #3b82f6;
+display:block;
+margin:0 auto 25px auto;
+border:4px solid #3498db;
 }
 
-.section{margin-bottom:30px;}
-
-.section h2{
+.sidebar h2{
+margin-top:30px;
 margin-bottom:10px;
-font-size:16px;
-border-bottom:1px solid rgba(255,255,255,0.2);
+font-size:14px;
+letter-spacing:1px;
+text-transform:uppercase;
+border-bottom:1px solid rgba(255,255,255,0.3);
 padding-bottom:5px;
 }
 
-ul{list-style:none;}
-li{margin-bottom:8px;font-size:14px;}
+.sidebar p, .sidebar li{
+font-size:13px;
+margin-bottom:8px;
+}
 
-a{color:#3b82f6;text-decoration:none;}
-a:hover{color:#60a5fa;}
+.sidebar ul{
+list-style:none;
+}
+
+.main{
+padding:50px;
+}
+
+.main h1{
+font-size:28px;
+margin-bottom:5px;
+}
+
+.job-title{
+color:#3498db;
+margin-bottom:25px;
+font-weight:bold;
+}
+
+.section{
+margin-bottom:30px;
+}
+
+.section h2{
+font-size:16px;
+margin-bottom:10px;
+border-bottom:2px solid #3498db;
+display:inline-block;
+padding-bottom:4px;
+}
+
+.section p{
+font-size:14px;
+line-height:1.6;
+margin-bottom:10px;
+}
+
+.timeline{
+margin-top:10px;
+}
 
 .timeline-item{
 margin-bottom:15px;
-padding-left:15px;
-border-left:2px solid #3b82f6;
+}
+
+.timeline-item strong{
+display:block;
+font-size:14px;
+}
+
+.timeline-item span{
+font-size:13px;
+color:#555;
 }
 
 @media(max-width:800px){
-.container{grid-template-columns:1fr;}
-.sidebar{border-right:none;}
+.cv{
+grid-template-columns:1fr;
+}
+.sidebar{
+text-align:center;
+}
 }
 </style>
 </head>
 <body>
 
-<div class="top-controls">
-<div>
-<button id="itBtn" class="active">IT</button>
-<button id="enBtn">EN</button>
-</div>
-<div>
-<button id="themeBtn" class="secondary">🌙</button>
-<button onclick="downloadPDF()">📄 PDF</button>
-</div>
-</div>
-
-<div class="container">
+<div class="cv">
 
 <div class="sidebar">
 
 <img src="profile.jpg" class="profile-img">
 
-<h1>David Rusu</h1>
-<p>Front-End Developer</p>
+<h2>Contact</h2>
+<p>📧 davidrusu556@gmail.com</p>
+<p>📱 +39 347 859 3182</p>
+<p>💻 github.com/daviderusu71</p>
+<p>🔗 LinkedIn</p>
 
-<div class="section">
-<h2 id="contactTitle">Contatto</h2>
-<ul>
-<li>Email: davidrusu556@gmail.com</li>
-<li><a href="https://github.com/daviderusu71" target="_blank">GitHub</a></li>
-<li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-</ul>
-</div>
-
-<div class="section">
-<h2 id="skillsTitle">Competenze</h2>
+<h2>Skills</h2>
 <ul>
 <li>HTML5</li>
-<li>CSS3 (Flexbox, Grid)</li>
+<li>CSS3</li>
 <li>JavaScript (ES6)</li>
 <li>Chart.js</li>
 <li>Git & GitHub</li>
 </ul>
-</div>
+
+<h2>Languages</h2>
+<ul>
+<li>Italian – Fluent</li>
+<li>Romanian – Native</li>
+<li>English – Intermediate</li>
+</ul>
 
 </div>
 
 <div class="main">
 
+<h1>David Rusu</h1>
+<div class="job-title">
+Front-End Developer | HTML, CSS, JavaScript | Admin Dashboards & CRM Applications | Open to Work
+</div>
+
 <div class="section">
-<h2 id="profileTitle">Profilo</h2>
-<p id="profileText">
-Front-End Developer appassionato nello sviluppo di applicazioni web moderne con focus su UI pulita e codice strutturato.
+<h2>Profile</h2>
+<p>
+Self-taught Front-End Developer focused on building modern, responsive web applications.
+Experienced in developing dashboards and CRM systems with clean UI and structured code.
 </p>
 </div>
 
 <div class="section">
-<h2 id="projectsTitle">Progetti</h2>
-<ul>
-<li><a href="https://daviderusu71.github.io/Admin-Dashboard/" target="_blank">Admin Dashboard</a></li>
-<li><a href="https://daviderusu71.github.io/Mini-CRM-Pro/" target="_blank">Mini CRM Pro</a></li>
-</ul>
+<h2>Experience</h2>
+
+<div class="timeline">
+<div class="timeline-item">
+<strong>2025 – Present</strong>
+<span>Personal Front-End Projects</span>
+<p>
+Built Admin Dashboard and Mini CRM applications including authentication logic, 
+dynamic charts, localStorage data management and responsive layouts.
+</p>
+</div>
+
+<div class="timeline-item">
+<strong>Freelance Work</strong>
+<span>UI Development</span>
+<p>
+Developed interactive UI components for small business clients with focus on performance and usability.
+</p>
+</div>
+</div>
+
 </div>
 
 <div class="section">
-<h2 id="experienceTitle">Esperienza</h2>
+<h2>Projects</h2>
+<p>Admin Dashboard – Authentication, Charts, Task Manager</p>
+<p>Mini CRM Pro – Client Management, Revenue Tracking</p>
+<p>Developed full web applications including:
+• Admin Dashboard (authentication, charts, task management)
+• Mini CRM Pro (client tracking, revenue system, local storage management)
 
-<div class="timeline-item">
-<strong>2025 – Present</strong>
-<p>Development of interactive web applications including dashboards and CRM systems.</p>
-</div>
-
-<div class="timeline-item">
-<strong>Freelance Projects</strong>
-<p>UI development and front-end optimization for small business clients.</p>
+Technologies: HTML, CSS, JavaScript, Chart.js, GitHub</p>
 </div>
 
 </div>
 
 </div>
-</div>
-
-<script>
-const { jsPDF } = window.jspdf;
-
-let currentLang = "it";
-
-// ===== LANGUAGE SWITCH =====
-const itBtn = document.getElementById("itBtn");
-const enBtn = document.getElementById("enBtn");
-
-itBtn.onclick = () => {
-currentLang = "it";
-itBtn.classList.add("active");
-enBtn.classList.remove("active");
-
-document.getElementById("profileTitle").innerText="Profilo";
-document.getElementById("projectsTitle").innerText="Progetti";
-document.getElementById("skillsTitle").innerText="Competenze";
-document.getElementById("contactTitle").innerText="Contatto";
-document.getElementById("experienceTitle").innerText="Esperienza";
-};
-
-enBtn.onclick = () => {
-currentLang = "en";
-enBtn.classList.add("active");
-itBtn.classList.remove("active");
-
-document.getElementById("profileTitle").innerText="Profile";
-document.getElementById("projectsTitle").innerText="Projects";
-document.getElementById("skillsTitle").innerText="Skills";
-document.getElementById("contactTitle").innerText="Contact";
-document.getElementById("experienceTitle").innerText="Experience";
-};
-
-// ===== THEME =====
-document.getElementById("themeBtn").onclick=()=>{
-document.body.classList.toggle("light");
-};
-
-// ===== PDF GENERATOR =====
-function downloadPDF(){
-
-const doc = new jsPDF();
-const img = new Image();
-img.src = "profile.jpg";
-
-img.onload = function(){
-
-// === FOTO ===
-doc.addImage(img, "JPEG", 150, 15, 40, 40);
-
-// === HEADER ===
-doc.setFont("helvetica", "bold");
-doc.setFontSize(20);
-doc.text("David Rusu", 20, 20);
-
-doc.setFont("helvetica", "normal");
-doc.setFontSize(12);
-doc.text("Front-End Developer", 20, 30);
-
-doc.line(20, 35, 190, 35);
-
-let y = 50;
-
-if(currentLang === "it"){
-
-doc.setFontSize(14);
-doc.text("Profilo", 20, y);
-y += 10;
-
-doc.setFontSize(11);
-doc.text(
-"Sviluppatore Front-End specializzato in HTML, CSS e JavaScript con esperienza nello sviluppo di dashboard e sistemi CRM.",
-20,
-y,
-{ maxWidth: 170 }
-);
-y += 20;
-
-doc.setFontSize(14);
-doc.text("Competenze", 20, y);
-y += 10;
-
-doc.setFontSize(11);
-doc.text("• HTML5", 25, y); y+=7;
-doc.text("• CSS3 (Flexbox, Grid)", 25, y); y+=7;
-doc.text("• JavaScript (ES6)", 25, y); y+=7;
-doc.text("• Chart.js", 25, y); y+=7;
-doc.text("• Git & GitHub", 25, y); y+=15;
-
-doc.setFontSize(14);
-doc.text("Esperienza", 20, y);
-y += 10;
-
-doc.setFontSize(11);
-doc.text("2025 – Present | Sviluppo applicazioni web interattive", 25, y, { maxWidth: 160 });
-y+=10;
-doc.text("Progetti freelance per piccole imprese.", 25, y, { maxWidth: 160 });
-
-} else {
-
-doc.setFontSize(14);
-doc.text("Profile", 20, y);
-y += 10;
-
-doc.setFontSize(11);
-doc.text(
-"Front-End Developer specialized in HTML, CSS and JavaScript with experience in dashboards and CRM systems.",
-20,
-y,
-{ maxWidth: 170 }
-);
-y += 20;
-
-doc.setFontSize(14);
-doc.text("Skills", 20, y);
-y += 10;
-
-doc.setFontSize(11);
-doc.text("• HTML5", 25, y); y+=7;
-doc.text("• CSS3 (Flexbox, Grid)", 25, y); y+=7;
-doc.text("• JavaScript (ES6)", 25, y); y+=7;
-doc.text("• Chart.js", 25, y); y+=7;
-doc.text("• Git & GitHub", 25, y); y+=15;
-
-doc.setFontSize(14);
-doc.text("Experience", 20, y);
-y += 10;
-
-doc.setFontSize(11);
-doc.text("2025 – Present | Development of interactive web applications", 25, y, { maxWidth: 160 });
-y+=10;
-doc.text("Freelance UI development for small businesses.", 25, y, { maxWidth: 160 });
-
-}
-
-doc.save("David_Rusu_CV.pdf");
-
-};
-}
-</script>
 
 </body>
 </html>
