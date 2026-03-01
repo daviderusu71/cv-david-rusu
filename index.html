@@ -209,5 +209,146 @@ Technologies: HTML, CSS, JavaScript, Chart.js, GitHub</p>
 
 </div>
 
+  <script>
+const { jsPDF } = window.jspdf;
+
+let currentLang = "it";
+
+// ===== LANGUAGE SWITCH =====
+const itBtn = document.getElementById("itBtn");
+const enBtn = document.getElementById("enBtn");
+
+itBtn.onclick = () => {
+currentLang = "it";
+itBtn.classList.add("active");
+enBtn.classList.remove("active");
+
+document.getElementById("profileTitle").innerText="Profilo";
+document.getElementById("projectsTitle").innerText="Progetti";
+document.getElementById("skillsTitle").innerText="Competenze";
+document.getElementById("contactTitle").innerText="Contatto";
+document.getElementById("experienceTitle").innerText="Esperienza";
+};
+
+enBtn.onclick = () => {
+currentLang = "en";
+enBtn.classList.add("active");
+itBtn.classList.remove("active");
+
+document.getElementById("profileTitle").innerText="Profile";
+document.getElementById("projectsTitle").innerText="Projects";
+document.getElementById("skillsTitle").innerText="Skills";
+document.getElementById("contactTitle").innerText="Contact";
+document.getElementById("experienceTitle").innerText="Experience";
+};
+
+// ===== THEME =====
+document.getElementById("themeBtn").onclick=()=>{
+document.body.classList.toggle("light");
+};
+
+// ===== PDF GENERATOR =====
+function downloadPDF(){
+
+const doc = new jsPDF();
+const img = new Image();
+img.src = "profile.jpg";
+
+img.onload = function(){
+
+// === FOTO ===
+doc.addImage(img, "JPEG", 150, 15, 40, 40);
+
+// === HEADER ===
+doc.setFont("helvetica", "bold");
+doc.setFontSize(20);
+doc.text("David Rusu", 20, 20);
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(12);
+doc.text("Front-End Developer", 20, 30);
+
+doc.line(20, 35, 190, 35);
+
+let y = 50;
+
+if(currentLang === "it"){
+
+doc.setFontSize(14);
+doc.text("Profilo", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text(
+"Sviluppatore Front-End specializzato in HTML, CSS e JavaScript con esperienza nello sviluppo di dashboard e sistemi CRM.",
+20,
+y,
+{ maxWidth: 170 }
+);
+y += 20;
+
+doc.setFontSize(14);
+doc.text("Competenze", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("• HTML5", 25, y); y+=7;
+doc.text("• CSS3 (Flexbox, Grid)", 25, y); y+=7;
+doc.text("• JavaScript (ES6)", 25, y); y+=7;
+doc.text("• Chart.js", 25, y); y+=7;
+doc.text("• Git & GitHub", 25, y); y+=15;
+
+doc.setFontSize(14);
+doc.text("Esperienza", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("2025 – Present | Sviluppo applicazioni web interattive", 25, y, { maxWidth: 160 });
+y+=10;
+doc.text("Progetti freelance per piccole imprese.", 25, y, { maxWidth: 160 });
+
+} else {
+
+doc.setFontSize(14);
+doc.text("Profile", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text(
+"Front-End Developer specialized in HTML, CSS and JavaScript with experience in dashboards and CRM systems.",
+20,
+y,
+{ maxWidth: 170 }
+);
+y += 20;
+
+doc.setFontSize(14);
+doc.text("Skills", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("• HTML5", 25, y); y+=7;
+doc.text("• CSS3 (Flexbox, Grid)", 25, y); y+=7;
+doc.text("• JavaScript (ES6)", 25, y); y+=7;
+doc.text("• Chart.js", 25, y); y+=7;
+doc.text("• Git & GitHub", 25, y); y+=15;
+
+doc.setFontSize(14);
+doc.text("Experience", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("2025 – Present | Development of interactive web applications", 25, y, { maxWidth: 160 });
+y+=10;
+doc.text("Freelance UI development for small businesses.", 25, y, { maxWidth: 160 });
+
+}
+
+doc.save("David_Rusu_CV.pdf");
+
+};
+}
+</script>
+
 </body>
 </html>
