@@ -84,24 +84,6 @@ li{margin-bottom:8px;font-size:14px;}
 a{color:#3b82f6;text-decoration:none;}
 a:hover{color:#60a5fa;}
 
-.skill{
-margin-bottom:12px;
-}
-
-.skill-bar{
-background:#334155;
-height:8px;
-border-radius:4px;
-overflow:hidden;
-}
-
-.skill-fill{
-height:100%;
-background:#3b82f6;
-width:0;
-transition:1.2s ease;
-}
-
 .timeline-item{
 margin-bottom:15px;
 padding-left:15px;
@@ -127,7 +109,7 @@ border-left:2px solid #3b82f6;
 </div>
 </div>
 
-<div class="container" id="cvContent">
+<div class="container">
 
 <div class="sidebar">
 
@@ -147,22 +129,13 @@ border-left:2px solid #3b82f6;
 
 <div class="section">
 <h2 id="skillsTitle">Competenze</h2>
-
-<div class="skill">
-<p>HTML</p>
-<div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
-</div>
-
-<div class="skill">
-<p>CSS</p>
-<div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-</div>
-
-<div class="skill">
-<p>JavaScript</p>
-<div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-</div>
-
+<ul>
+<li>HTML5</li>
+<li>CSS3 (Flexbox, Grid)</li>
+<li>JavaScript (ES6)</li>
+<li>Chart.js</li>
+<li>Git & GitHub</li>
+</ul>
 </div>
 
 </div>
@@ -185,22 +158,16 @@ Front-End Developer appassionato nello sviluppo di applicazioni web moderne con 
 </div>
 
 <div class="section">
-<h2 id="experienceTitle">Experience</h2>
+<h2 id="experienceTitle">Esperienza</h2>
 
 <div class="timeline-item">
-<strong>2025 – Present | Front-End Developer (Personal Projects)</strong>
-<p>
-Built modern web applications including Admin Dashboard and CRM system.
-Implemented authentication logic, dynamic charts, local storage management and responsive UI.
-</p>
+<strong>2025 – Present</strong>
+<p>Development of interactive web applications including dashboards and CRM systems.</p>
 </div>
 
 <div class="timeline-item">
 <strong>Freelance Projects</strong>
-<p>
-Developed UI interfaces and interactive components for small business clients.
-Focus on clean design, usability and performance optimization.
-</p>
+<p>UI development and front-end optimization for small business clients.</p>
 </div>
 
 </div>
@@ -211,9 +178,18 @@ Focus on clean design, usability and performance optimization.
 <script>
 const { jsPDF } = window.jspdf;
 
+// ===== PDF GENERATOR =====
 function downloadPDF(){
 
 const doc = new jsPDF();
+
+// LOAD IMAGE
+const img = new Image();
+img.src = "profile.jpg";
+
+img.onload = function(){
+
+doc.addImage(img, "JPEG", 150, 15, 40, 40);
 
 doc.setFont("helvetica", "bold");
 doc.setFontSize(20);
@@ -226,45 +202,66 @@ doc.text("Front-End Developer", 20, 30);
 doc.line(20, 35, 190, 35);
 
 doc.setFontSize(14);
-doc.text("Profile", 20, 45);
+doc.text("Profile", 20, 50);
 
 doc.setFontSize(11);
 doc.text(
 "Front-End Developer specialized in HTML, CSS and JavaScript. Experienced in building dashboards and CRM systems.",
 20,
-55,
-{ maxWidth: 170 }
+60,
+{ maxWidth: 120 }
 );
 
 doc.setFontSize(14);
-doc.text("Skills", 20, 80);
+doc.text("Skills", 20, 85);
 
 doc.setFontSize(11);
-doc.text("• HTML5", 25, 90);
-doc.text("• CSS3 (Flexbox, Grid)", 25, 97);
-doc.text("• JavaScript (ES6)", 25, 104);
-doc.text("• Chart.js", 25, 111);
-doc.text("• Git & GitHub", 25, 118);
+doc.text("• HTML5", 25, 95);
+doc.text("• CSS3 (Flexbox, Grid)", 25, 102);
+doc.text("• JavaScript (ES6)", 25, 109);
+doc.text("• Chart.js", 25, 116);
+doc.text("• Git & GitHub", 25, 123);
 
 doc.setFontSize(14);
-doc.text("Projects", 20, 135);
+doc.text("Projects", 20, 140);
 
 doc.setFontSize(11);
-doc.text("• Admin Dashboard (Authentication, Charts, Task Manager)", 25, 145);
-doc.text("• Mini CRM Pro (Client Management, Revenue Tracking)", 25, 152);
-
-doc.setFontSize(14);
-doc.text("Contact", 20, 170);
-
-doc.setFontSize(11);
-doc.text("Email: emailul-tau@gmail.com", 25, 180);
-doc.text("GitHub: github.com/daviderusu71", 25, 187);
+doc.text("• Admin Dashboard", 25, 150);
+doc.text("• Mini CRM Pro", 25, 157);
 
 doc.save("David_Rusu_CV.pdf");
+};
 }
 
+// ===== THEME =====
 document.getElementById("themeBtn").onclick=()=>{
 document.body.classList.toggle("light");
+};
+
+// ===== LANGUAGE SWITCH =====
+const itBtn = document.getElementById("itBtn");
+const enBtn = document.getElementById("enBtn");
+
+itBtn.onclick = () => {
+itBtn.classList.add("active");
+enBtn.classList.remove("active");
+
+document.getElementById("profileTitle").innerText="Profilo";
+document.getElementById("projectsTitle").innerText="Progetti";
+document.getElementById("skillsTitle").innerText="Competenze";
+document.getElementById("contactTitle").innerText="Contatto";
+document.getElementById("experienceTitle").innerText="Esperienza";
+};
+
+enBtn.onclick = () => {
+enBtn.classList.add("active");
+itBtn.classList.remove("active");
+
+document.getElementById("profileTitle").innerText="Profile";
+document.getElementById("projectsTitle").innerText="Projects";
+document.getElementById("skillsTitle").innerText="Skills";
+document.getElementById("contactTitle").innerText="Contact";
+document.getElementById("experienceTitle").innerText="Experience";
 };
 </script>
 
