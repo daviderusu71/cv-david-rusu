@@ -21,6 +21,13 @@ body.light{
 background:#f1f5f9;
 color:#111;
 }
+  body.light .container{
+    background:white;
+    color:#111;
+}
+  body.light a {
+    color:#2563eb;
+}
 
 .top-controls{
 display:flex;
@@ -123,7 +130,7 @@ border-left:2px solid #3b82f6;
 <ul>
 <li>Email: davidrusu556@gmail.com</li>
 <li><a href="https://github.com/daviderusu71" target="_blank">GitHub</a></li>
-<li><a href="https://linkedin.com" target="_blank>LinkedIn</a></li>
+<li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
 </ul>
 </div>
 
@@ -178,12 +185,45 @@ Front-End Developer appassionato nello sviluppo di applicazioni web moderne con 
 <script>
 const { jsPDF } = window.jspdf;
 
+let currentLang = "it";
+
+// ===== LANGUAGE SWITCH =====
+const itBtn = document.getElementById("itBtn");
+const enBtn = document.getElementById("enBtn");
+
+itBtn.onclick = () => {
+currentLang = "it";
+itBtn.classList.add("active");
+enBtn.classList.remove("active");
+
+document.getElementById("profileTitle").innerText="Profilo";
+document.getElementById("projectsTitle").innerText="Progetti";
+document.getElementById("skillsTitle").innerText="Competenze";
+document.getElementById("contactTitle").innerText="Contatto";
+document.getElementById("experienceTitle").innerText="Esperienza";
+};
+
+enBtn.onclick = () => {
+currentLang = "en";
+enBtn.classList.add("active");
+itBtn.classList.remove("active");
+
+document.getElementById("profileTitle").innerText="Profile";
+document.getElementById("projectsTitle").innerText="Projects";
+document.getElementById("skillsTitle").innerText="Skills";
+document.getElementById("contactTitle").innerText="Contact";
+document.getElementById("experienceTitle").innerText="Experience";
+};
+
+// ===== THEME =====
+document.getElementById("themeBtn").onclick=()=>{
+document.body.classList.toggle("light");
+};
+
 // ===== PDF GENERATOR =====
 function downloadPDF(){
 
 const doc = new jsPDF();
-
-// LOAD IMAGE
 const img = new Image();
 img.src = "profile.jpg";
 
@@ -202,67 +242,28 @@ doc.text("Front-End Developer", 20, 30);
 doc.line(20, 35, 190, 35);
 
 doc.setFontSize(14);
-doc.text("Profile", 20, 50);
 
+if(currentLang === "it"){
+doc.text("Profilo", 20, 50);
 doc.setFontSize(11);
-doc.text(
-"Front-End Developer specialized in HTML, CSS and JavaScript. Experienced in building dashboards and CRM systems.",
-20,
-60,
-{ maxWidth: 120 }
-);
+doc.text("Sviluppatore Front-End specializzato in HTML, CSS e JavaScript.", 20, 60, { maxWidth: 120 });
+
+doc.setFontSize(14);
+doc.text("Competenze", 20, 85);
+
+} else {
+
+doc.text("Profile", 20, 50);
+doc.setFontSize(11);
+doc.text("Front-End Developer specialized in HTML, CSS and JavaScript.", 20, 60, { maxWidth: 120 });
 
 doc.setFontSize(14);
 doc.text("Skills", 20, 85);
-
-doc.setFontSize(11);
-doc.text("• HTML5", 25, 95);
-doc.text("• CSS3 (Flexbox, Grid)", 25, 102);
-doc.text("• JavaScript (ES6)", 25, 109);
-doc.text("• Chart.js", 25, 116);
-doc.text("• Git & GitHub", 25, 123);
-
-doc.setFontSize(14);
-doc.text("Projects", 20, 140);
-
-doc.setFontSize(11);
-doc.text("• Admin Dashboard", 25, 150);
-doc.text("• Mini CRM Pro", 25, 157);
+}
 
 doc.save("David_Rusu_CV.pdf");
 };
 }
-
-// ===== THEME =====
-document.getElementById("themeBtn").onclick=()=>{
-document.body.classList.toggle("light");
-};
-
-// ===== LANGUAGE SWITCH =====
-const itBtn = document.getElementById("itBtn");
-const enBtn = document.getElementById("enBtn");
-
-itBtn.onclick = () => {
-itBtn.classList.add("active");
-enBtn.classList.remove("active");
-
-document.getElementById("profileTitle").innerText="Profilo";
-document.getElementById("projectsTitle").innerText="Progetti";
-document.getElementById("skillsTitle").innerText="Competenze";
-document.getElementById("contactTitle").innerText="Contatto";
-document.getElementById("experienceTitle").innerText="Esperienza";
-};
-
-enBtn.onclick = () => {
-enBtn.classList.add("active");
-itBtn.classList.remove("active");
-
-document.getElementById("profileTitle").innerText="Profile";
-document.getElementById("projectsTitle").innerText="Projects";
-document.getElementById("skillsTitle").innerText="Skills";
-document.getElementById("contactTitle").innerText="Contact";
-document.getElementById("experienceTitle").innerText="Experience";
-};
 </script>
 
 </body>
