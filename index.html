@@ -185,16 +185,22 @@ Front-End Developer appassionato nello sviluppo di applicazioni web moderne con 
 </div>
 
 <div class="section">
-<h2 id="experienceTitle">Esperienza</h2>
+<h2 id="experienceTitle">Experience</h2>
 
 <div class="timeline-item">
-<strong>2025 - Oggi</strong>
-<p>Sviluppo progetti web personali e portfolio online.</p>
+<strong>2025 – Present | Front-End Developer (Personal Projects)</strong>
+<p>
+Built modern web applications including Admin Dashboard and CRM system.
+Implemented authentication logic, dynamic charts, local storage management and responsive UI.
+</p>
 </div>
 
 <div class="timeline-item">
-<strong>Progetti Freelance</strong>
-<p>Creazione dashboard e applicazioni CRM.</p>
+<strong>Freelance Projects</strong>
+<p>
+Developed UI interfaces and interactive components for small business clients.
+Focus on clean design, usability and performance optimization.
+</p>
 </div>
 
 </div>
@@ -205,10 +211,57 @@ Front-End Developer appassionato nello sviluppo di applicazioni web moderne con 
 <script>
 const { jsPDF } = window.jspdf;
 
+const { jsPDF } = window.jspdf;
+
 function downloadPDF(){
+
 const doc = new jsPDF();
-doc.text("David Rusu - CV", 20,20);
-doc.text("Front-End Developer",20,30);
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(20);
+doc.text("David Rusu", 20, 20);
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(12);
+doc.text("Front-End Developer", 20, 30);
+
+doc.line(20, 35, 190, 35);
+
+doc.setFontSize(14);
+doc.text("Profile", 20, 45);
+
+doc.setFontSize(11);
+doc.text(
+"Front-End Developer specialized in HTML, CSS and JavaScript. Experienced in building dashboards and CRM systems.",
+20,
+55,
+{ maxWidth: 170 }
+);
+
+doc.setFontSize(14);
+doc.text("Skills", 20, 80);
+
+doc.setFontSize(11);
+doc.text("• HTML5", 25, 90);
+doc.text("• CSS3 (Flexbox, Grid)", 25, 97);
+doc.text("• JavaScript (ES6)", 25, 104);
+doc.text("• Chart.js", 25, 111);
+doc.text("• Git & GitHub", 25, 118);
+
+doc.setFontSize(14);
+doc.text("Projects", 20, 135);
+
+doc.setFontSize(11);
+doc.text("• Admin Dashboard (Authentication, Charts, Task Manager)", 25, 145);
+doc.text("• Mini CRM Pro (Client Management, Revenue Tracking)", 25, 152);
+
+doc.setFontSize(14);
+doc.text("Contact", 20, 170);
+
+doc.setFontSize(11);
+doc.text("Email: emailul-tau@gmail.com", 25, 180);
+doc.text("GitHub: github.com/daviderusu71", 25, 187);
+
 doc.save("David_Rusu_CV.pdf");
 }
 
