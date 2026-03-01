@@ -229,8 +229,10 @@ img.src = "profile.jpg";
 
 img.onload = function(){
 
+// === FOTO ===
 doc.addImage(img, "JPEG", 150, 15, 40, 40);
 
+// === HEADER ===
 doc.setFont("helvetica", "bold");
 doc.setFontSize(20);
 doc.text("David Rusu", 20, 20);
@@ -241,27 +243,82 @@ doc.text("Front-End Developer", 20, 30);
 
 doc.line(20, 35, 190, 35);
 
-doc.setFontSize(14);
+let y = 50;
 
 if(currentLang === "it"){
-doc.text("Profilo", 20, 50);
-doc.setFontSize(11);
-doc.text("Sviluppatore Front-End specializzato in HTML, CSS e JavaScript.", 20, 60, { maxWidth: 120 });
 
 doc.setFontSize(14);
-doc.text("Competenze", 20, 85);
+doc.text("Profilo", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text(
+"Sviluppatore Front-End specializzato in HTML, CSS e JavaScript con esperienza nello sviluppo di dashboard e sistemi CRM.",
+20,
+y,
+{ maxWidth: 170 }
+);
+y += 20;
+
+doc.setFontSize(14);
+doc.text("Competenze", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("• HTML5", 25, y); y+=7;
+doc.text("• CSS3 (Flexbox, Grid)", 25, y); y+=7;
+doc.text("• JavaScript (ES6)", 25, y); y+=7;
+doc.text("• Chart.js", 25, y); y+=7;
+doc.text("• Git & GitHub", 25, y); y+=15;
+
+doc.setFontSize(14);
+doc.text("Esperienza", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("2025 – Present | Sviluppo applicazioni web interattive", 25, y, { maxWidth: 160 });
+y+=10;
+doc.text("Progetti freelance per piccole imprese.", 25, y, { maxWidth: 160 });
 
 } else {
 
-doc.text("Profile", 20, 50);
+doc.setFontSize(14);
+doc.text("Profile", 20, y);
+y += 10;
+
 doc.setFontSize(11);
-doc.text("Front-End Developer specialized in HTML, CSS and JavaScript.", 20, 60, { maxWidth: 120 });
+doc.text(
+"Front-End Developer specialized in HTML, CSS and JavaScript with experience in dashboards and CRM systems.",
+20,
+y,
+{ maxWidth: 170 }
+);
+y += 20;
 
 doc.setFontSize(14);
-doc.text("Skills", 20, 85);
+doc.text("Skills", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("• HTML5", 25, y); y+=7;
+doc.text("• CSS3 (Flexbox, Grid)", 25, y); y+=7;
+doc.text("• JavaScript (ES6)", 25, y); y+=7;
+doc.text("• Chart.js", 25, y); y+=7;
+doc.text("• Git & GitHub", 25, y); y+=15;
+
+doc.setFontSize(14);
+doc.text("Experience", 20, y);
+y += 10;
+
+doc.setFontSize(11);
+doc.text("2025 – Present | Development of interactive web applications", 25, y, { maxWidth: 160 });
+y+=10;
+doc.text("Freelance UI development for small businesses.", 25, y, { maxWidth: 160 });
+
 }
 
 doc.save("David_Rusu_CV.pdf");
+
 };
 }
 </script>
