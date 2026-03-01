@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David Rusu | CV</title>
+<title>David Rusu | Pro CV</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
@@ -11,8 +13,8 @@
 body{
 background:#0f172a;
 color:#f8fafc;
-transition:0.3s ease;
 padding:40px;
+transition:0.3s;
 }
 
 body.light{
@@ -20,70 +22,10 @@ background:#f1f5f9;
 color:#111;
 }
 
-.container{
-max-width:1000px;
-margin:auto;
-background:#1e293b;
-border-radius:16px;
-padding:40px;
-display:grid;
-grid-template-columns:300px 1fr;
-gap:40px;
-transition:0.3s ease;
-}
-
-body.light .container{
-background:white;
-}
-
-.sidebar{
-border-right:1px solid rgba(255,255,255,0.1);
-padding-right:20px;
-}
-
-h1{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.subtitle{
-opacity:0.7;
-margin-bottom:20px;
-}
-
-.section{
-margin-bottom:30px;
-}
-
-.section h2{
-margin-bottom:10px;
-font-size:16px;
-border-bottom:1px solid rgba(255,255,255,0.2);
-padding-bottom:5px;
-}
-
-ul{
-list-style:none;
-}
-
-li{
-margin-bottom:8px;
-font-size:14px;
-}
-
-a{
-color:#3b82f6;
-text-decoration:none;
-}
-
-a:hover{
-color:#60a5fa;
-}
-
 .top-controls{
 display:flex;
 justify-content:space-between;
-margin-bottom:30px;
+margin-bottom:20px;
 }
 
 button{
@@ -96,22 +38,79 @@ cursor:pointer;
 margin-left:5px;
 }
 
-button.secondary{
-background:#334155;
+button.secondary{background:#334155;}
+button.active{background:#2563eb;}
+
+.container{
+max-width:1000px;
+margin:auto;
+background:#1e293b;
+padding:40px;
+border-radius:16px;
+display:grid;
+grid-template-columns:300px 1fr;
+gap:40px;
 }
 
-button.active{
-background:#2563eb;
+body.light .container{background:white;}
+
+.sidebar{
+border-right:1px solid rgba(255,255,255,0.1);
+padding-right:20px;
+text-align:center;
+}
+
+.profile-img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+border:3px solid #3b82f6;
+}
+
+.section{margin-bottom:30px;}
+
+.section h2{
+margin-bottom:10px;
+font-size:16px;
+border-bottom:1px solid rgba(255,255,255,0.2);
+padding-bottom:5px;
+}
+
+ul{list-style:none;}
+li{margin-bottom:8px;font-size:14px;}
+
+a{color:#3b82f6;text-decoration:none;}
+a:hover{color:#60a5fa;}
+
+.skill{
+margin-bottom:12px;
+}
+
+.skill-bar{
+background:#334155;
+height:8px;
+border-radius:4px;
+overflow:hidden;
+}
+
+.skill-fill{
+height:100%;
+background:#3b82f6;
+width:0;
+transition:1.2s ease;
+}
+
+.timeline-item{
+margin-bottom:15px;
+padding-left:15px;
+border-left:2px solid #3b82f6;
 }
 
 @media(max-width:800px){
-.container{
-grid-template-columns:1fr;
-}
-.sidebar{
-border-right:none;
-padding-right:0;
-}
+.container{grid-template-columns:1fr;}
+.sidebar{border-right:none;}
 }
 </style>
 </head>
@@ -124,34 +123,46 @@ padding-right:0;
 </div>
 <div>
 <button id="themeBtn" class="secondary">🌙</button>
-<button onclick="window.print()">📄 PDF</button>
+<button onclick="downloadPDF()">📄 PDF</button>
 </div>
 </div>
 
-<div class="container">
+<div class="container" id="cvContent">
 
 <div class="sidebar">
+
+<img src="https://i.pravatar.cc/200" class="profile-img">
+
 <h1>David Rusu</h1>
-<p class="subtitle">Front-End Developer</p>
+<p>Front-End Developer</p>
 
 <div class="section">
 <h2 id="contactTitle">Contatto</h2>
 <ul>
-<li>Email: davidrusu556@gmail.com</li>
+<li>Email: emailul-tau@gmail.com</li>
 <li><a href="https://github.com/daviderusu71" target="_blank">GitHub</a></li>
-<li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+<li><a href="#">LinkedIn</a></li>
 </ul>
 </div>
 
 <div class="section">
 <h2 id="skillsTitle">Competenze</h2>
-<ul>
-<li>HTML5</li>
-<li>CSS3 (Flexbox, Grid)</li>
-<li>JavaScript (ES6)</li>
-<li>Chart.js</li>
-<li>Git & GitHub</li>
-</ul>
+
+<div class="skill">
+<p>HTML</p>
+<div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+</div>
+
+<div class="skill">
+<p>CSS</p>
+<div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+<p>JavaScript</p>
+<div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+</div>
+
 </div>
 
 </div>
@@ -161,8 +172,7 @@ padding-right:0;
 <div class="section">
 <h2 id="profileTitle">Profilo</h2>
 <p id="profileText">
-Front-End Developer appassionato nello sviluppo di applicazioni web interattive.
-Focus su UI moderna e codice pulito.
+Front-End Developer appassionato nello sviluppo di applicazioni web moderne con focus su UI pulita e codice strutturato.
 </p>
 </div>
 
@@ -175,54 +185,34 @@ Focus su UI moderna e codice pulito.
 </div>
 
 <div class="section">
-<h2 id="educationTitle">Educazione</h2>
-<ul>
-<li>Formazione autodidatta in sviluppo web</li>
-<li>Progetti personali pubblicati online</li>
-</ul>
+<h2 id="experienceTitle">Esperienza</h2>
+
+<div class="timeline-item">
+<strong>2025 - Oggi</strong>
+<p>Sviluppo progetti web personali e portfolio online.</p>
+</div>
+
+<div class="timeline-item">
+<strong>Progetti Freelance</strong>
+<p>Creazione dashboard e applicazioni CRM.</p>
 </div>
 
 </div>
 
+</div>
 </div>
 
 <script>
-const itBtn=document.getElementById("itBtn");
-const enBtn=document.getElementById("enBtn");
-const themeBtn=document.getElementById("themeBtn");
+const { jsPDF } = window.jspdf;
 
-const profileTitle=document.getElementById("profileTitle");
-const profileText=document.getElementById("profileText");
-const skillsTitle=document.getElementById("skillsTitle");
-const projectsTitle=document.getElementById("projectsTitle");
-const educationTitle=document.getElementById("educationTitle");
-const contactTitle=document.getElementById("contactTitle");
+function downloadPDF(){
+const doc = new jsPDF();
+doc.text("David Rusu - CV", 20,20);
+doc.text("Front-End Developer",20,30);
+doc.save("David_Rusu_CV.pdf");
+}
 
-itBtn.onclick=()=>{
-itBtn.classList.add("active");
-enBtn.classList.remove("active");
-
-profileTitle.innerText="Profilo";
-profileText.innerText="Front-End Developer appassionato nello sviluppo di applicazioni web interattive. Focus su UI moderna e codice pulito.";
-skillsTitle.innerText="Competenze";
-projectsTitle.innerText="Progetti";
-educationTitle.innerText="Educazione";
-contactTitle.innerText="Contatto";
-};
-
-enBtn.onclick=()=>{
-enBtn.classList.add("active");
-itBtn.classList.remove("active");
-
-profileTitle.innerText="Profile";
-profileText.innerText="Front-End Developer passionate about building interactive web applications. Focused on modern UI and clean code.";
-skillsTitle.innerText="Skills";
-projectsTitle.innerText="Projects";
-educationTitle.innerText="Education";
-contactTitle.innerText="Contact";
-};
-
-themeBtn.onclick=()=>{
+document.getElementById("themeBtn").onclick=()=>{
 document.body.classList.toggle("light");
 };
 </script>
